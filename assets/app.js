@@ -652,18 +652,30 @@
     var params = new URLSearchParams(location.search);
     var qp = params.get("q");
     var yp = params.get("y");
+
+    /* 关掉 CSS 的 scroll-behavior: smooth，否则长页面上定位要"飞"几秒 */
+    function jumpTo(top) {
+      var de = document.documentElement;
+      var old = de.style.scrollBehavior;
+      de.style.scrollBehavior = "auto";
+      window.scrollTo(0, top);
+      requestAnimationFrame(function () {
+        de.style.scrollBehavior = old;
+      });
+    }
+
     if (qp) {
       var anchor = highlightQuery(qp);
       if (yp === null && anchor) {
         setTimeout(function () {
           var top = anchor.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.3;
-          window.scrollTo({ top: Math.max(0, top), behavior: "instant" });
+          jumpTo(Math.max(0, top));
         }, 260);
       }
     }
     if (yp !== null) {
       setTimeout(function () {
-        window.scrollTo({ top: +yp || 0, behavior: "instant" });
+        jumpTo(+yp || 0);
       }, 300);
     }
   }
