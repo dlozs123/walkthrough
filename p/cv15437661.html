@@ -9,10 +9,13 @@
 <link rel="stylesheet" href="../assets/style.css">
 
 </head>
-<body class="art">
+<body class="art" data-base="..">
 <header class="bar">
   <a class="back" href="../index.html" aria-label="返回目录">←</a>
   <div class="bar-t">英雄传说：闪之轨迹I·完美攻略·终版（1）</div>
+  <button class="ic" id="searchOpen" aria-label="搜索">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.9-3.9"/></svg>
+  </button>
   <button class="fs" id="fsBtn" aria-label="调整字号">A</button>
 </header>
 <div class="progress" id="prog"></div>
@@ -356,6 +359,32 @@
 </main>
 <div class="viewer" id="viewer" hidden><img alt=""><div class="vhint">双击放大 · 单击关闭</div></div>
 <div class="totop" id="totop" aria-label="回到顶部">↑</div>
+<button class="fab" id="bmBtn" aria-label="书签">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M7 3.5h10a1 1 0 0 1 1 1v16l-6-4-6 4v-16a1 1 0 0 1 1-1z"/></svg>
+</button>
+<div class="sheet sv" id="searchSheet" hidden>
+  <div class="sheet-hd">
+    <div class="sinput">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.9-3.9"/></svg>
+      <input id="sq" type="search" placeholder="搜索攻略内容…" autocomplete="off" enterkeyhint="search">
+    </div>
+    <button class="scancel" id="sCancel">取消</button>
+  </div>
+  <div class="gchk" id="gchk"></div>
+  <div class="sres" id="sres"></div>
+</div>
+<div class="mask" id="bmMask" hidden></div>
+<div class="sheet bm" id="bmSheet" hidden>
+  <div class="sheet-hd">
+    <strong class="bmt">书签</strong>
+    <span class="bmc" id="bmCount"></span>
+    <div class="bmact">
+      <button class="bsave" id="bmSave">记录当前位置</button>
+      <button class="scancel" id="bmClose">关闭</button>
+    </div>
+  </div>
+  <div class="sres bml" id="bmlist"></div>
+</div>
 <script src="../assets/app.js"></script>
 </body>
 </html>
